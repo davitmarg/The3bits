@@ -1,5 +1,7 @@
 package com.example.the3bits.rest.facade.user.model;
 
+import com.example.the3bits.rest.persistence.user.UserRole;
+
 public class UserRequestModel {
 
     private String firstName;
@@ -8,7 +10,7 @@ public class UserRequestModel {
     private String username;
     private String password;
     private String phoneNumber;
-    private String role;
+    private UserRole role;
 
     public String getFirstName() {
         return firstName;
@@ -58,11 +60,11 @@ public class UserRequestModel {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getRole() {
+    public UserRole getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(UserRole role) {
         this.role = role;
     }
 }

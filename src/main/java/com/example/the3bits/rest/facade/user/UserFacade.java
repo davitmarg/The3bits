@@ -1,6 +1,7 @@
 package com.example.the3bits.rest.facade.user;
 
 import com.example.the3bits.rest.converter.UserConverter;
+import com.example.the3bits.rest.facade.user.model.DefaultUserRegistrationRequest;
 import com.example.the3bits.rest.facade.user.model.UserRequestModel;
 import com.example.the3bits.rest.facade.user.model.UserResponseModel;
 import com.example.the3bits.rest.persistence.user.User;
@@ -21,31 +22,37 @@ public class UserFacade {
         this.userConverter = converter;
     }
 
-    public UserResponseModel add(UserRequestModel request) {
-        User user = userConverter.RequestToUser(request);
+    public UserResponseModel add(DefaultUserRegistrationRequest request) {
+        User user = userConverter.toUser(request);
         user = userService.add(user);
-        return userConverter.UserToResponse(user);
+        return userConverter.toResponse(user);
+    }
+
+    public UserResponseModel add(UserRequestModel request) {
+        User user = userConverter.toUser(request);
+        user = userService.add(user);
+        return userConverter.toResponse(user);
     }
 
     public UserResponseModel get(Long id) {
         User user = userService.get(id);
-        return userConverter.UserToResponse(user);
+        return userConverter.toResponse(user);
     }
 
     public List<UserResponseModel> getAll() {
         List<User> all = userService.getAll();
-        return all.stream().map(userConverter::UserToResponse).collect(Collectors.toList());
+        return all.stream().map(userConverter::toResponse).collect(Collectors.toList());
     }
 
     public UserResponseModel update(Long id, UserRequestModel request) {
-        User user = userConverter.RequestToUser(request);
+        User user = userConverter.toUser(request);
         user = userService.update(id, user);
-        return userConverter.UserToResponse(user);
+        return userConverter.toResponse(user);
     }
 
     public List<UserResponseModel> delete(Long id) {
         List<User> all = userService.delete(id);
-        return all.stream().map(userConverter::UserToResponse).collect(Collectors.toList());
+        return all.stream().map(userConverter::toResponse).collect(Collectors.toList());
     }
 
 }
