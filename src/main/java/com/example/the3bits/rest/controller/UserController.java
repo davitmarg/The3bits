@@ -28,28 +28,28 @@ public class UserController {
 
 
     @PostMapping("/user")
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    /*@PreAuthorize("hasAnyAuthority('ADMIN')")*/
     public ResponseEntity<UserResponseModel> add(@RequestBody UserRequestModel request) {
         UserResponseModel response = userFacade.add(request);
         return ResponseEntity.ok(response);
     }
 
     @GetMapping("/user/{id}")
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    /*@PreAuthorize("hasAnyAuthority('ADMIN')")*/
     public ResponseEntity<UserResponseModel> get(@PathVariable Long id) {
         UserResponseModel response = userFacade.get(id);
         return ResponseEntity.ok(response);
     }
 
     @GetMapping("/user")
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    /*@PreAuthorize("hasAnyAuthority('ADMIN')")*/
     public ResponseEntity<List<UserResponseModel>> getAll() {
         List<UserResponseModel> all = userFacade.getAll();
         return ResponseEntity.ok(all);
     }
 
     @PutMapping("/user/{id}")
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    /*@PreAuthorize("hasAnyAuthority('ADMIN')")*/
     public ResponseEntity<UserResponseModel> update(@PathVariable Long id, @RequestBody UserRequestModel request) {
         UserResponseModel response = userFacade.update(id, request);
         return ResponseEntity.ok(response);
@@ -57,7 +57,7 @@ public class UserController {
 
 
     @DeleteMapping("/user/{id}")
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    /*@PreAuthorize("hasAnyAuthority('ADMIN')")*/
     public ResponseEntity<List<UserResponseModel>> delete(@PathVariable Long id) {
         List<UserResponseModel> all = userFacade.delete(id);
         return ResponseEntity.ok(all);
