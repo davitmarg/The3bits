@@ -5,7 +5,7 @@ import com.example.the3bits.rest.facade.user.model.DefaultUserRegistrationReques
 import com.example.the3bits.rest.facade.user.model.UserRequestModel;
 import com.example.the3bits.rest.facade.user.model.UserResponseModel;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
