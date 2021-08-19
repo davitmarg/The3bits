@@ -11,9 +11,11 @@ import java.util.List;
 @Service
 public class HouseConverter {
     private final AddressConverter addressConverter;
+    private final UserConverter userConverter;
 
-    public HouseConverter(AddressConverter addressConverter) {
+    public HouseConverter(AddressConverter addressConverter, UserConverter userConverter) {
         this.addressConverter = addressConverter;
+        this.userConverter = userConverter;
     }
 
     public HouseResponseModel houseToResponse(House house){
@@ -22,7 +24,8 @@ public class HouseConverter {
         response.setRoomCount(house.getRoomCount());
         response.setMaxPersonCount(house.getMaxPersonCount());
         response.setBuildingType(house.getBuildingType());
-        response.setAddressResponseModel(addressConverter.addressToResponse(house.getAddress()));
+        response.setAddress(addressConverter.addressToResponse(house.getAddress()));
+        response.setUser(userConverter.toResponse(house.getUser()));
         return response;
     }
     public List<HouseResponseModel> housesToResponses(List<House> houses){

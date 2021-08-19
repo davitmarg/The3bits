@@ -4,7 +4,7 @@ public class RentalRequestModel {
     private Long houseId;
     private int price;
     private String description;
-    private Long hostId;
+    private Long userId;
 
     public Long getHouseId() {
         return houseId;
@@ -30,11 +30,11 @@ public class RentalRequestModel {
         this.description = description;
     }
 
-    public Long getHostId() {
-        return hostId;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setHostId(Long hostId) {
-        this.hostId = hostId;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }

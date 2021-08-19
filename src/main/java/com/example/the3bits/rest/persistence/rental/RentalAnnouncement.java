@@ -15,7 +15,7 @@ public class RentalAnnouncement {
     private int price;
     private String description;
     @ManyToOne(cascade = CascadeType.ALL)
-    private User host;
+    private User user;
     private boolean active;
 
     public Long getId() {
@@ -47,12 +47,12 @@ public class RentalAnnouncement {
         this.description = description;
     }
 
-    public User getHost() {
-        return host;
+    public User getUser() {
+        return user;
     }
 
-    public void setHost(User host) {
-        this.host = host;
+    public void setUser(User host) {
+        this.user = host;
     }
 
     public boolean isActive() {
