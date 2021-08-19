@@ -8,7 +8,7 @@ public class RentalResponseModel {
     private HouseResponseModel houseResponseModel;
     private int price;
     private String description;
-    private UserResponseModel hostResponseModel;
+    private UserResponseModel user;
     private boolean active;
 
     public Long getId() {
@@ -43,12 +43,12 @@ public class RentalResponseModel {
         this.description = description;
     }
 
-    public UserResponseModel getHostResponseModel() {
-        return hostResponseModel;
+    public UserResponseModel getUser() {
+        return user;
     }
 
-    public void setHostResponseModel(UserResponseModel hostResponseModel) {
-        this.hostResponseModel = hostResponseModel;
+    public void setUser(UserResponseModel user) {
+        this.user = user;
     }
 
     public boolean isActive() {

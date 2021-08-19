@@ -36,7 +36,7 @@ public class RentalServiceImpl implements RentalServiceInterface {
         byId.setHouse(rentalAnnouncement.getHouse());
         byId.setPrice(rentalAnnouncement.getPrice());
         byId.setDescription(rentalAnnouncement.getDescription());
-        byId.setHost(rentalAnnouncement.getHost());
+        byId.setUser(rentalAnnouncement.getUser());
         byId.setActive(rentalAnnouncement.isActive());
         return rentalRepository.save(byId);
     }

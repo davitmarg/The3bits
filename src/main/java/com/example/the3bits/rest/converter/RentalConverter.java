@@ -25,7 +25,7 @@ public class RentalConverter {
         rentalAnnouncement.setHouse(house);
         rentalAnnouncement.setPrice(request.getPrice());
         rentalAnnouncement.setDescription(request.getDescription());
-        rentalAnnouncement.setHost(host);
+        rentalAnnouncement.setUser(host);
         return rentalAnnouncement;
     }
     public RentalResponseModel announcementToResponse(RentalAnnouncement rentalAnnouncement){
@@ -34,7 +34,7 @@ public class RentalConverter {
         response.setHouseResponseModel(houseConverter.houseToResponse(rentalAnnouncement.getHouse()));
         response.setPrice(rentalAnnouncement.getPrice());
         response.setDescription(rentalAnnouncement.getDescription());
-        response.setHostResponseModel(userConverter.toResponse(rentalAnnouncement.getHost()));
+        response.setUser(userConverter.toResponse(rentalAnnouncement.getUser()));
         response.setActive(rentalAnnouncement.isActive());
         return response;
     }

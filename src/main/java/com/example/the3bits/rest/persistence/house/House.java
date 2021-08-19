@@ -1,5 +1,7 @@
 package com.example.the3bits.rest.persistence.house;
 
+import com.example.the3bits.rest.persistence.user.User;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,8 +15,19 @@ public class House {
     @OneToOne(cascade = CascadeType.ALL)
     private Address address;
 
+    @ManyToOne
+    private User user;
+
     public Long getId() {
         return id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Address getAddress() {

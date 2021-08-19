@@ -3,6 +3,8 @@ package com.example.the3bits.rest.facade.house.model;
 import com.example.the3bits.rest.persistence.house.BuildingType;
 
 public class HouseRequestModel {
+
+    private Long userId;
     private int roomCount;
     private int maxPersonCount;
     private BuildingType buildingType;
@@ -14,6 +16,14 @@ public class HouseRequestModel {
 
     public void setAddressRequestModel(AddressRequestModel addressRequestModel) {
         this.addressRequestModel = addressRequestModel;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public int getRoomCount() {

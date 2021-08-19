@@ -15,42 +15,42 @@ import java.util.List;
 
 @Component
 public class RentalFacade {
-    private final RentalServiceInterface rentalServiceInterface;
-    private final UserServiceInterface userServiceInterface;
-    private final HouseServiceInterface houseServiceInterface;
+    private final RentalServiceInterface rentalService;
+    private final UserServiceInterface userService;
+    private final HouseServiceInterface houseService;
     private final RentalConverter rentalConverter;
 
-    public RentalFacade(RentalServiceInterface rentalServiceInterface, UserServiceInterface userServiceInterface, HouseServiceInterface houseServiceInterface, RentalConverter rentalConverter) {
-        this.rentalServiceInterface = rentalServiceInterface;
-        this.userServiceInterface = userServiceInterface;
-        this.houseServiceInterface = houseServiceInterface;
+    public RentalFacade(RentalServiceInterface rentalService, UserServiceInterface userService, HouseServiceInterface houseService, RentalConverter rentalConverter) {
+        this.rentalService = rentalService;
+        this.userService = userService;
+        this.houseService = houseService;
         this.rentalConverter = rentalConverter;
     }
 
     public RentalResponseModel get(Long id){
-        RentalAnnouncement rentalAnnouncement = rentalServiceInterface.get(id);
+        RentalAnnouncement rentalAnnouncement = rentalService.get(id);
         return rentalConverter.announcementToResponse(rentalAnnouncement);
     }
     public List<RentalResponseModel> getAll(){
-        List<RentalAnnouncement> all = rentalServiceInterface.getAll();
+        List<RentalAnnouncement> all = rentalService.getAll();
         return rentalConverter.announcementsToResponses(all);
     }
     public RentalResponseModel add(RentalRequestModel request){
-        House house = houseServiceInterface.get(request.getHouseId());
-        User host = userServiceInterface.get(request.getHostId());
+        House house = houseService.get(request.getHouseId());
+        User host = userService.get(request.getUserId());
         RentalAnnouncement rentalAnnouncement = rentalConverter.requestToAnnouncement(request, house, host);
-        RentalAnnouncement add = rentalServiceInterface.add(rentalAnnouncement);
+        RentalAnnouncement add = rentalService.add(rentalAnnouncement);
         return rentalConverter.announcementToResponse(add);
     }
     public RentalResponseModel update(Long id, RentalRequestModel request){
-        House house = houseServiceInterface.get(request.getHouseId());
-        User host = userServiceInterface.get(request.getHostId());
+        House house = houseService.get(request.getHouseId());
+        User host = userService.get(request.getUserId());
         RentalAnnouncement rentalAnnouncement = rentalConverter.requestToAnnouncement(request, house, host);
-        RentalAnnouncement update = rentalServiceInterface.update(id, rentalAnnouncement);
+        RentalAnnouncement update = rentalService.update(id, rentalAnnouncement);
         return rentalConverter.announcementToResponse(update);
     }
     public List<RentalResponseModel> delete(Long id){
-        List<RentalAnnouncement> delete = rentalServiceInterface.delete(id);
+        List<RentalAnnouncement> delete = rentalService.delete(id);
         return rentalConverter.announcementsToResponses(delete);
     }
 }
