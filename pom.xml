@@ -79,6 +79,8 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+
+        <finalName>The3bitsApp</finalName>
     </build>
 
 </project>
