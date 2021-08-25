@@ -25,6 +25,7 @@ public class LoginController {
     }
 
     @GetMapping("/login")
+    /*@PreAuthorize("hasAnyAuthority('ADMIN')")*/
     public ResponseEntity<UserResponseModel> login(Authentication authentication) {
         Long id = userFacade.getIdByAuthentication(authentication);
         return ResponseEntity.ok(userFacade.get(id));
