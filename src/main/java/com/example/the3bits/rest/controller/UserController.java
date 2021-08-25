@@ -20,13 +20,6 @@ public class UserController {
     }
 
 
-    @PostMapping("/register")
-    public ResponseEntity<UserResponseModel> register(@RequestBody DefaultUserRegistrationRequest request) {
-        UserResponseModel response = userFacade.add(request);
-        return ResponseEntity.ok(response);
-    }
-
-
     @PostMapping("/user")
     /*@PreAuthorize("hasAnyAuthority('ADMIN')")*/
     public ResponseEntity<UserResponseModel> add(@RequestBody UserRequestModel request) {

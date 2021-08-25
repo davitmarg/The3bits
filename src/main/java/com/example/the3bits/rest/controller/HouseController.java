@@ -3,7 +3,6 @@ package com.example.the3bits.rest.controller;
 import com.example.the3bits.rest.facade.house.HouseFacade;
 import com.example.the3bits.rest.facade.house.model.HouseRequestModel;
 import com.example.the3bits.rest.facade.house.model.HouseResponseModel;
-import com.example.the3bits.rest.persistence.house.House;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

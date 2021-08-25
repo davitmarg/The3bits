@@ -1,11 +1,13 @@
 package com.example.the3bits.rest.facade.user;
 
+import com.example.the3bits.config.MyUserDetails;
 import com.example.the3bits.rest.converter.UserConverter;
 import com.example.the3bits.rest.facade.user.model.DefaultUserRegistrationRequest;
 import com.example.the3bits.rest.facade.user.model.UserRequestModel;
 import com.example.the3bits.rest.facade.user.model.UserResponseModel;
 import com.example.the3bits.rest.persistence.user.User;
 import com.example.the3bits.rest.service.user.UserServiceInterface;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +22,11 @@ public class UserFacade {
     public UserFacade(UserServiceInterface userService, UserConverter converter) {
         this.userService = userService;
         this.userConverter = converter;
+    }
+
+    public Long getIdByAuthentication(Authentication authentication) {
+        MyUserDetails userDetails = (MyUserDetails) authentication.getPrincipal();
+        return userDetails.getId();
     }
 
     public UserResponseModel add(DefaultUserRegistrationRequest request) {
