@@ -1,9 +1,11 @@
 package com.example.the3bits.rest.persistence.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    public User findByUsername(String term);
+    @Query("select u from User u where u.email = ?1 or u.username = ?1")
+    User findByUsername(String term);
 
 }

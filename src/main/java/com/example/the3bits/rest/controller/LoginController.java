@@ -4,6 +4,7 @@ import com.example.the3bits.rest.facade.user.UserFacade;
 import com.example.the3bits.rest.facade.user.model.DefaultUserRegistrationRequest;
 import com.example.the3bits.rest.facade.user.model.UserResponseModel;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,7 +26,7 @@ public class LoginController {
     }
 
     @GetMapping("/login")
-    /*@PreAuthorize("hasAnyAuthority('ADMIN')")*/
+    @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
     public ResponseEntity<UserResponseModel> login(Authentication authentication) {
         Long id = userFacade.getIdByAuthentication(authentication);
         return ResponseEntity.ok(userFacade.get(id));
