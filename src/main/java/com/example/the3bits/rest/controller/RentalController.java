@@ -15,23 +15,23 @@ public class RentalController {
     public RentalController(RentalFacade rentalFacade) {
         this.rentalFacade = rentalFacade;
     }
-    @GetMapping(value = "/rent/{id}")
+    @GetMapping(value = "/announcement/{id}")
     public ResponseEntity<RentalResponseModel> get(@PathVariable Long id){
         return ResponseEntity.ok(rentalFacade.get(id));
     }
-    @GetMapping(value = "/rent")
+    @GetMapping(value = "/announcement")
     public ResponseEntity<List<RentalResponseModel>> getAll(){
         return ResponseEntity.ok(rentalFacade.getAll());
     }
-    @PostMapping(value = "/rent")
+    @PostMapping(value = "/announcement")
     public ResponseEntity<RentalResponseModel> add(@RequestBody RentalRequestModel request){
         return ResponseEntity.ok(rentalFacade.add(request));
     }
-    @PutMapping(value = "/rent/{id}")
+    @PutMapping(value = "/announcement/{id}")
     public ResponseEntity<RentalResponseModel> update(@PathVariable Long id, @RequestBody RentalRequestModel request){
         return ResponseEntity.ok(rentalFacade.update(id,request));
     }
-    @DeleteMapping(value = "/rent/{id}")
+    @DeleteMapping(value = "/announcement/{id}")
     public ResponseEntity<List<RentalResponseModel>> delete(@PathVariable Long id){
         return ResponseEntity.ok(rentalFacade.delete(id));
     }
