@@ -21,4 +21,9 @@ public class MyTestController {
     public String foo() {
         return "OK!!!!!";
     }
+    
+      @GetMapping("/ashot")
+    public String ghazaryan() {
+        return "Ashot Ghazaryan";
+    }
 }
