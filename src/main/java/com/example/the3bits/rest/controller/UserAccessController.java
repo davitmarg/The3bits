@@ -22,7 +22,7 @@ public class UserAccessController {
 
     private final HouseFacade houseFacade;
     private final RentalFacade rentalFacade;
-    private final UserFacade userFacade;
+    private final UserFacade userFacade; 
 
     public UserAccessController(HouseFacade houseFacade, RentalFacade rentalFacade, UserFacade userFacade) {
         this.houseFacade = houseFacade;
