@@ -1,11 +1,10 @@
 package com.example.the3bits.config;
 
-import com.example.the3bits.rest.persistence.user.User;
-import com.example.the3bits.rest.service.user.UserServiceInterface;
+import com.example.the3bits.persistence.user.User;
+import com.example.the3bits.service.user.UserServiceInterface;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
