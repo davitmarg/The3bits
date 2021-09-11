@@ -10,6 +10,7 @@ public interface UserServiceInterface {
     public User get(Long id);
     public List<User> getAll();
     public User update(Long id , User user);
+    public User updateImage(Long id, String path);
     public List<User> delete(Long id);
     public User findByEmailOrUsername(String term);
 

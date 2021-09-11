@@ -14,9 +14,12 @@ public class User {
     private String username;
     private String password;
     private String phoneNumber;
+    private String imagePath;
 
     @Enumerated(EnumType.STRING)
     private UserRole role;
+
+
 
 
     public Long getId() {
@@ -71,6 +74,13 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
     public UserRole getRole() {
         return role;
     }

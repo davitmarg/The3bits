@@ -8,6 +8,10 @@ import com.example.the3bits.rest.persistence.user.UserRole;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
+
 @Service
 public class UserConverter {
 
@@ -19,6 +23,7 @@ public class UserConverter {
         user.setUsername(request.getUsername());
         user.setPassword(new BCryptPasswordEncoder().encode(request.getPassword()));
         user.setPhoneNumber(request.getPhoneNumber());
+        user.setImagePath("C:\\Users\\User\\Desktop\\uploads\\Enums.PNG");
         user.setRole(request.getRole());
         return user;
     }
@@ -31,6 +36,7 @@ public class UserConverter {
         user.setUsername(request.getUsername());
         user.setPassword(new BCryptPasswordEncoder().encode(request.getPassword()));
         user.setPhoneNumber(request.getPhoneNumber());
+        user.setImagePath("C:\\Users\\User\\Desktop\\uploads\\Enums.PNG");
         user.setRole(UserRole.USER);
         return user;
     }
@@ -44,6 +50,7 @@ public class UserConverter {
         response.setEmail(user.getEmail());
         response.setUsername(user.getUsername());
         response.setPhoneNumber(user.getPhoneNumber());
+        response.setImagePath(user.getImagePath());
         response.setRole(user.getRole());
         return response;
     }

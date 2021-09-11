@@ -2,6 +2,9 @@ package com.example.the3bits.rest.facade.user.model;
 
 import com.example.the3bits.rest.persistence.user.UserRole;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+
 public class UserResponseModel {
     private Long id;
     private String firstName;
@@ -9,6 +12,11 @@ public class UserResponseModel {
     private String email;
     private String username;
     private String phoneNumber;
+
+
+    private String imagePath;
+
+
     private UserRole role;
 
     public Long getId() {
@@ -59,6 +67,13 @@ public class UserResponseModel {
         this.phoneNumber = phoneNumber;
     }
 
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
     public UserRole getRole() {
         return role;
     }

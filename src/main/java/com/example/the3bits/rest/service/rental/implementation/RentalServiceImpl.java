@@ -1,5 +1,6 @@
 package com.example.the3bits.rest.service.rental.implementation;
 
+import com.example.the3bits.rest.persistence.house.House;
 import com.example.the3bits.rest.persistence.rental.RentalAnnouncement;
 import com.example.the3bits.rest.persistence.rental.RentalRepository;
 import com.example.the3bits.rest.service.rental.RentalServiceInterface;
@@ -45,5 +46,10 @@ public class RentalServiceImpl implements RentalServiceInterface {
     public List<RentalAnnouncement> delete(Long id) {
         rentalRepository.deleteById(id);
         return rentalRepository.findAll();
+    }
+
+    @Override
+    public void deleteByHouse(House house) {
+        rentalRepository.deleteByHouse(house);
     }
 }
