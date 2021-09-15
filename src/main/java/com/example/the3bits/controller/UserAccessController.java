@@ -41,7 +41,7 @@ public class UserAccessController {
     public ResponseEntity<RentalResponseModel> addAnnouncement(Authentication authentication, @RequestBody RentalRequestModel request) {
         Long userId = userFacade.getIdByAuthentication(authentication);
         request.setUserId(userId);
-        if(houseFacade.get(request.getHouseId())!=null && houseFacade.get(request.getHouseId()).getUser().getId().equals(userId)) {
+        if(houseFacade.get(request.getHouseId())==null || !houseFacade.get(request.getHouseId()).getUser().getId().equals(userId)) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
         }
         return ResponseEntity.ok(rentalFacade.add(request));
