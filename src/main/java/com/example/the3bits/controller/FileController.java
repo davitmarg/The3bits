@@ -49,6 +49,6 @@ public class FileController {
         requestFile.withCannedAcl(CannedAccessControlList.PublicRead);
         PutObjectResult putObjectResult = s3Client.putObject(requestFile);
         String pictureURL = s3Client.getUrl("the3bits", userImage.getOriginalFilename()).toExternalForm();
-        return ResponseEntity.ok(userFacade.updateImage(userId, pictureURL));
+        return ResponseEntity.ok(userFacade.updateImage(userId, pictureURL));   
     }
 }

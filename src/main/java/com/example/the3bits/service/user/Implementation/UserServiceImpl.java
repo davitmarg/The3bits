@@ -5,6 +5,7 @@ import com.example.the3bits.persistence.user.UserRepository;
 import com.example.the3bits.service.user.UserServiceInterface;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -17,6 +18,7 @@ public class UserServiceImpl implements UserServiceInterface {
     }
 
     @Override
+    @Transactional
     public User add(User user) {
         return userRepository.save(user);
     }
@@ -32,6 +34,7 @@ public class UserServiceImpl implements UserServiceInterface {
     }
 
     @Override
+    @Transactional
     public User update(Long id, User user) {
         User userById = userRepository.getById(id);
         userById.setFirstName(user.getFirstName());
@@ -45,6 +48,7 @@ public class UserServiceImpl implements UserServiceInterface {
     }
 
     @Override
+    @Transactional
     public User updateImage(Long id, String path) {
         User byId = userRepository.getById(id);
         byId.setImagePath(path);
@@ -52,6 +56,7 @@ public class UserServiceImpl implements UserServiceInterface {
     }
 
     @Override
+    @Transactional
     public List<User> delete(Long id) {
         userRepository.deleteById(id);
         return userRepository.findAll();

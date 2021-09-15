@@ -6,6 +6,7 @@ import com.example.the3bits.persistence.user.User;
 import com.example.the3bits.service.house.HouseServiceInterface;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -27,11 +28,13 @@ public class HouseServiceImpl implements HouseServiceInterface {
     }
 
     @Override
+    @Transactional
     public House add(House house) {
         return houseRepository.save(house);
     }
 
     @Override
+    @Transactional
     public House update(Long id, House house) {
         House byId = houseRepository.getById(id);
         byId.setRoomCount(house.getRoomCount());
@@ -42,6 +45,7 @@ public class HouseServiceImpl implements HouseServiceInterface {
     }
 
     @Override
+    @Transactional
     public List<House> delete(Long id) {
         houseRepository.deleteById(id);
         return houseRepository.findAll();
@@ -50,5 +54,12 @@ public class HouseServiceImpl implements HouseServiceInterface {
     @Override
     public List<House> getByUser(User user) {
         return houseRepository.findAllByUser(user);
+    }
+
+    @Override
+    @Transactional
+    public List<House> deleteByUser(User user) {
+        houseRepository.deleteAllByUser(user);
+        return houseRepository.findAll();
     }
 }
