@@ -56,6 +56,10 @@ public class UserFacade {
         user = userService.update(id, user);
         return userConverter.toResponse(user);
     }
+    public UserResponseModel updateImage(Long id, String path){
+        User user = userService.updateImage(id, path);
+        return userConverter.toResponse(user);
+    }
 
     public List<UserResponseModel> delete(Long id) {
         List<User> all = userService.delete(id);

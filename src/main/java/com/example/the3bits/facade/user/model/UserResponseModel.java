@@ -9,6 +9,9 @@ public class UserResponseModel {
     private String email;
     private String username;
     private String phoneNumber;
+    private String imagePath;
+
+
     private UserRole role;
 
     public Long getId() {
@@ -57,6 +60,14 @@ public class UserResponseModel {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 
     public UserRole getRole() {
