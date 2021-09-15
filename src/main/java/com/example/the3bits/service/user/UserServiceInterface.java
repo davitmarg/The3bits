@@ -12,5 +12,5 @@ public interface UserServiceInterface {
     public User update(Long id , User user);
     public List<User> delete(Long id);
     public User findByEmailOrUsername(String term);
-
+    public User updateImage(Long id, String path);
 }

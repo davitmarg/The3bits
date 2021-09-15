@@ -45,6 +45,13 @@ public class UserServiceImpl implements UserServiceInterface {
     }
 
     @Override
+    public User updateImage(Long id, String path) {
+        User byId = userRepository.getById(id);
+        byId.setImagePath(path);
+        return userRepository.save(byId);
+    }
+
+    @Override
     public List<User> delete(Long id) {
         userRepository.deleteById(id);
         return userRepository.findAll();
