@@ -26,8 +26,8 @@ import java.io.InputStream;
 @RestController
 public class FileController {
     private final UserFacade userFacade;
-    private final String ACCESS_KEY = "AKIAR6HC55A5TG2KBK73";
-    private final String SECRET_ACCESS_KEY = "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";
+    private final String ACCESS_KEY = "AKIAR6HC55A5RHI6ZK4A";
+    private final String SECRET_ACCESS_KEY = "K1yC7k1LgmQVhSZPRs" + "PKLoLMPmHXpXXyc8myaVHN";
     private final AWSCredentials credentials = new BasicAWSCredentials(ACCESS_KEY,SECRET_ACCESS_KEY);
     private final AWSStaticCredentialsProvider awsStaticCredentialsProvider = new AWSStaticCredentialsProvider(credentials);
     private final AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
