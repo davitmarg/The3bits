@@ -12,5 +12,6 @@ public interface HouseServiceInterface {
     House update(Long id, House house);
     List<House> delete(Long id);
     List<House> getByUser(User user);
+    List<House> deleteByUser(User user);
 
 }

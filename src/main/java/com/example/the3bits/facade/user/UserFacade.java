@@ -6,6 +6,8 @@ import com.example.the3bits.facade.user.model.DefaultUserRegistrationRequest;
 import com.example.the3bits.facade.user.model.UserRequestModel;
 import com.example.the3bits.facade.user.model.UserResponseModel;
 import com.example.the3bits.persistence.user.User;
+import com.example.the3bits.service.house.HouseServiceInterface;
+import com.example.the3bits.service.rental.RentalServiceInterface;
 import com.example.the3bits.service.user.UserServiceInterface;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
@@ -17,10 +19,14 @@ import java.util.stream.Collectors;
 public class UserFacade {
 
     private final UserServiceInterface userService;
+    private final HouseServiceInterface houseService;
+    private final RentalServiceInterface rentalService;
     private final UserConverter userConverter;
 
-    public UserFacade(UserServiceInterface userService, UserConverter converter) {
+    public UserFacade(UserServiceInterface userService, HouseServiceInterface houseService, RentalServiceInterface rentalService, UserConverter converter) {
         this.userService = userService;
+        this.houseService = houseService;
+        this.rentalService = rentalService;
         this.userConverter = converter;
     }
 
@@ -62,7 +68,13 @@ public class UserFacade {
     }
 
     public List<UserResponseModel> delete(Long id) {
+        User user = userService.get(id);
+        rentalService.deleteByUser(user);
+        houseService.deleteByUser(user);
         List<User> all = userService.delete(id);
+
+
+
         return all.stream().map(userConverter::toResponse).collect(Collectors.toList());
     }
 

@@ -10,11 +10,11 @@ public class RentalAnnouncement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private House house;
     private int price;
     private String description;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private User user;
     private boolean active;
 

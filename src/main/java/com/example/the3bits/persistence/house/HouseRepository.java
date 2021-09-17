@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface HouseRepository extends JpaRepository<House,Long> {
     List<House> findAllByUser(User user);
+    void deleteAllByUser(User user);
 }
