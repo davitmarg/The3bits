@@ -17,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -41,7 +42,7 @@ public class FileController {
     }
 
     @PutMapping (value = "/userImage", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-    public ResponseEntity<UserResponseModel> uploadUserImage(@RequestParam("userImage") MultipartFile userImage, Authentication authentication) throws IOException{
+    public ResponseEntity<UserResponseModel> uploadUserImage(@RequestPart MultipartFile userImage, Authentication authentication) throws IOException{
         Long userId = userFacade.getIdByAuthentication(authentication);
         InputStream inputStream = userImage.getInputStream();
 
