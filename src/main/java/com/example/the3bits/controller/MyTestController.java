@@ -35,8 +35,8 @@ public class MyTestController {
     @PutMapping(value = "/testUpload", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public ResponseEntity<String> uploadImage(@RequestPart MultipartFile userImage) throws IOException {
 
-        String ACCESS_KEY = "AKIAR6HC55A5RHI6ZK4A";
-        String SECRET_ACCESS_KEY = "K1yC7k1LgmQVhSZPRs" + "PKLoLMPmHXpXXyc8myaVHN";
+        String ACCESS_KEY = "AKIAR6HC55A56BQGZIWD";
+        String SECRET_ACCESS_KEY = "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";
 
         AWSCredentials credentials = new BasicAWSCredentials(ACCESS_KEY,SECRET_ACCESS_KEY);
         AWSStaticCredentialsProvider awsStaticCredentialsProvider = new AWSStaticCredentialsProvider(credentials);
