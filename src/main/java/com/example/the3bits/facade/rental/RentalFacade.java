@@ -53,4 +53,8 @@ public class RentalFacade {
         List<RentalAnnouncement> delete = rentalService.delete(id);
         return rentalConverter.announcementsToResponses(delete);
     }
+    public List<RentalResponseModel> getByUser(Long userId){
+        return rentalConverter.announcementsToResponses(rentalService.getByUser(userService.get(userId)));
+    }
+
 }

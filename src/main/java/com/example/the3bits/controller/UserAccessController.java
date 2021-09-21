@@ -36,22 +36,80 @@ public class UserAccessController {
         return ResponseEntity.ok(houseFacade.add(request));
     }
 
-    @PostMapping("/addAnnouncement")
+    @PutMapping("/updateHouse")
     @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
-    public ResponseEntity<RentalResponseModel> addAnnouncement(Authentication authentication, @RequestBody RentalRequestModel request) {
+    public ResponseEntity<HouseResponseModel> updateHouse(@PathVariable Long id, Authentication authentication, @RequestBody HouseRequestModel request) {
         Long userId = userFacade.getIdByAuthentication(authentication);
-        request.setUserId(userId);
-        if(houseFacade.get(request.getHouseId())!=null && !houseFacade.get(request.getHouseId()).getUser().getId().equals(userId)) {
+        if(!(houseFacade.get(id)!= null && houseFacade.get(id).getUser().getId().equals(userId)))
             return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
-        }
-        return ResponseEntity.ok(rentalFacade.add(request));
+        return ResponseEntity.ok(houseFacade.update(id,request));
     }
 
-    @GetMapping("/getUserHouse")
+    @DeleteMapping("/deleteHouse")
+    @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
+    public ResponseEntity<List<HouseResponseModel>> deleteHouse(Authentication authentication,@PathVariable Long id ) {
+        Long userId = userFacade.getIdByAuthentication(authentication);
+        if(!(houseFacade.get(id)!= null && houseFacade.get(id).getUser().getId().equals(userId)))
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
+        return ResponseEntity.ok(houseFacade.delete(id));
+    }
+
+
+    @GetMapping("/getHouses")
     @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
     public ResponseEntity<List<HouseResponseModel>> getHouses(Authentication authentication) {
         Long userId = userFacade.getIdByAuthentication(authentication);
         return ResponseEntity.ok(houseFacade.getByUser(userId));
     }
+
+    @PostMapping("/addAnnouncement")
+    @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
+    public ResponseEntity<RentalResponseModel> addAnnouncement(Authentication authentication, @RequestBody RentalRequestModel request) {
+        Long userId = userFacade.getIdByAuthentication(authentication);
+        request.setUserId(userId);
+        if(!(houseFacade.get(request.getHouseId())!=null && houseFacade.get(request.getHouseId()).getUser().getId().equals(userId))) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
+        }
+        return ResponseEntity.ok(rentalFacade.add(request));
+    }
+    @PutMapping("/updateAnnouncement")
+    @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
+    public ResponseEntity<RentalResponseModel> updateAnnouncement(@PathVariable Long id, Authentication authentication, @RequestBody RentalRequestModel request) {
+        Long userId = userFacade.getIdByAuthentication(authentication);
+        request.setUserId(userId);
+
+
+        if(!(rentalFacade.get(id)!=null && rentalFacade.get(id).getUser().getId().equals(userId))) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
+        }
+
+        if(!(houseFacade.get(request.getHouseId())!=null && houseFacade.get(request.getHouseId()).getUser().getId().equals(userId))) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
+        }
+
+        return ResponseEntity.ok(rentalFacade.update(id, request));
+    }
+
+    @DeleteMapping("/deleteAnnouncement")
+    @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
+    public ResponseEntity<List<RentalResponseModel>> deleteAnnouncement(@PathVariable Long id, Authentication authentication) {
+        Long userId = userFacade.getIdByAuthentication(authentication);
+
+
+        if(!(rentalFacade.get(id)!=null && rentalFacade.get(id).getUser().getId().equals(userId))) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
+        }
+
+        return ResponseEntity.ok(rentalFacade.delete(id));
+    }
+
+    @GetMapping("/getAnnouncements")
+    @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
+    public ResponseEntity<List<RentalResponseModel>> getAnnouncements(Authentication authentication) {
+        Long userId = userFacade.getIdByAuthentication(authentication);
+        return ResponseEntity.ok(rentalFacade.getByUser(userId));
+    }
+
+
 
 }
